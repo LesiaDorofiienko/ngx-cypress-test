@@ -36,3 +36,15 @@
 //   }
 // }
 require("cypress-xpath");
+import "@bahmutov/cy-api";
+
+Cypress.Commands.overwrite("visit", (originalVisit, url) => {
+  originalVisit({
+    // @ts-ignore
+    url,
+    auth: {
+      username: "guest",
+      password: "welcome2qauto",
+    },
+  });
+});
